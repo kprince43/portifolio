@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------
+ * DESIGN TOKENS
+ * Direction: "Calibration" — a lab-instrument register for a builder's
+ * portfolio. Cool paper / ink instead of warm cream, a single signal-orange
+ * accent instead of acid-green-on-black, tick-mark rules instead of
+ * hairline newspaper columns.
+ * ---------------------------------------------------------------------- */
+
+:root {
+  /* core surfaces */
+  --paper: #eef0ec; /* light-mode background, cool off-white, not cream */
+  --ink: #14181c; /* light-mode text / dark-mode surface base */
+  --graphite: #101316; /* dark-mode background */
+  --bone: #e7e5dd; /* dark-mode text */
+
+  /* accents */
+  --signal: #ff4d1c; /* primary accent — calibration / warning orange */
+  --amber: #ffb000; /* secondary accent, used sparingly */
+
+  /* structure */
+  --line: #d7d9d2; /* light-mode hairlines / tick marks */
+  --line-strong: #b9bcb2;
+  --steel: #5c6470; /* light-mode muted text */
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+.dark {
+  --paper: #101316;
+  --ink: #e7e5dd;
+  --line: #262b30;
+  --line-strong: #343a40;
+  --steel: #9aa0a6;
+}
+
+@theme inline {
+  /* color tokens exposed to Tailwind utilities, e.g. bg-paper, text-ink */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-bone: var(--bone);
+  --color-signal: var(--signal);
+  --color-amber: var(--amber);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-steel: var(--steel);
+
+  /* typography tokens */
+  --font-display: var(--font-archivo), "Archivo", sans-serif;
+  --font-body: var(--font-public-sans), "Public Sans", sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+
+  /* layout */
+  --container-max: 1440px;
+  --breakpoint-3xl: 1600px;
+}
+
+/* -------------------------------------------------------------------------
+ * BASE LAYER
+ * ---------------------------------------------------------------------- */
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* faint instrument-grid texture on the paper surface */
+body {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: -1px -1px;
+}
+
+.dark body {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  opacity: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: var(--color-paper);
+}
+
+/* keyboard focus is always visible, never suppressed */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* thin, instrument-style scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * UTILITY LAYER — small reusable classes for the "calibration" motif
+ * ---------------------------------------------------------------------- */
+
+@layer utilities {
+  .text-mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tick-rule {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-line-strong) 0,
+      var(--color-line-strong) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    height: 5px;
+  }
+}
