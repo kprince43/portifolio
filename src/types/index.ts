@@ -28,6 +28,7 @@ export interface SiteConfig {
   url: string;
   email: string;
   version: string;
+  resumeUrl: string;
   nav: NavLink[];
   socials: SocialLink[];
 }

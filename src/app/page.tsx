@@ -1,40 +1,18 @@
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Badge } from "@/components/ui/badge";
+import { SubDivider } from "@/components/ui/sub-divider";
 import { Button } from "@/components/ui/button";
+import { Hero } from "@/components/sections/hero";
+import { AboutStory } from "@/components/sections/about-story";
+import { Timeline } from "@/components/sections/timeline";
+import { SkillsSection } from "@/components/sections/skills-section";
+import { BentoGrid } from "@/components/sections/bento-grid";
 import { siteConfig } from "@/data/site";
-
-const stack = ["TypeScript", "Next.js", "Tailwind", "Framer Motion", "Three.js", "Git"];
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section id="top" className="border-b border-line">
-        <Container className="flex min-h-[calc(100vh-4rem)] flex-col justify-center py-20">
-          <p className="text-mono-label mb-6 text-signal">PORTFOLIO — CALIBRATED 2026</p>
-          <h1 className="max-w-4xl text-5xl leading-[1.05] text-ink sm:text-6xl lg:text-7xl">
-            {siteConfig.tagline}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-steel">
-            {siteConfig.name} — {siteConfig.role}. This is the foundation layer: layout, theme,
-            and components. Work, about, and contact sections arrive in the next build phase.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            {stack.map((tech) => (
-              <Badge key={tech}>{tech}</Badge>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Button href="#work">View Work</Button>
-            <Button variant="outline" href={`mailto:${siteConfig.email}`}>
-              Get in Touch
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <Hero />
 
       {/* WORK (placeholder) */}
       <section id="work" className="border-b border-line py-24">
@@ -42,19 +20,31 @@ export default function Home() {
           <SectionHeading
             eyebrow="01 — WORK"
             title="Selected projects"
-            description="Project cards and the asymmetrical grid land in Phase 2. This section is wired into the nav and scroll-tracking now so it's ready to receive that content."
+            description="Project cards and the asymmetrical grid land in an upcoming phase. This section is wired into the nav and scroll-tracking now so it's ready to receive that content."
           />
         </Container>
       </section>
 
-      {/* ABOUT (placeholder) */}
+      {/* ABOUT — story, timeline, then the quick-facts bento grid */}
       <section id="about" className="border-b border-line py-24">
         <Container>
           <SectionHeading
             eyebrow="02 — ABOUT"
-            title="Background & approach"
-            description="Bio, GitHub activity, and timeline content will be added once the data layer for repos and skills is built out."
+            title="The story so far"
+            description="How I got into building things, what I'm working toward, and the milestones along the way."
+            className="mb-12"
           />
+
+          <AboutStory />
+
+          <SubDivider label="// TIMELINE" className="mt-16" />
+          <Timeline />
+
+          <SubDivider label="// SKILLS" className="mt-20" />
+          <SkillsSection />
+
+          <SubDivider label="// SNAPSHOT" className="mt-20" />
+          <BentoGrid />
         </Container>
       </section>
 

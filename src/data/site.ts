@@ -6,12 +6,14 @@ import type { SiteConfig } from "@/types";
  * is wired in — components should never hardcode this data directly.
  */
 export const siteConfig: SiteConfig = {
-  name: "Your Name",
-  role: "Creative Developer",
+  name: "Kwizera Prince",
+  role: "Full-Stack Engineer",
   tagline: "Building interfaces with precision and a little bit of motion.",
   url: "https://example.com",
-  email: "hello@example.com",
-  version: "v0.1.0",
+  email: "kwizeraprince4real@gmail.com",
+  version: "v0.2.0",
+  // Drop your actual PDF into /public/resume.pdf — this link points there.
+  resumeUrl: "/resume.pdf",
   nav: [
     { index: "00", label: "Index", href: "/" },
     { index: "01", label: "Work", href: "/#work" },
@@ -19,9 +21,13 @@ export const siteConfig: SiteConfig = {
     { index: "03", label: "Contact", href: "/#contact" },
   ],
   socials: [
-    { platform: "github", label: "GitHub", code: "GH", href: "https://github.com" },
-    { platform: "linkedin", label: "LinkedIn", code: "IN", href: "https://linkedin.com" },
-    { platform: "x", label: "X / Twitter", code: "X", href: "https://x.com" },
-    { platform: "email", label: "Email", code: "@", href: "mailto:hello@example.com" },
+    { platform: "github", label: "GitHub", code: "GH", href: "https://github.com/kprince43" },
+    {
+      platform: "linkedin",
+      label: "LinkedIn",
+      code: "IN",
+      href: "https://www.linkedin.com/in/prince-kwizera-1b3a75405",
+    },
+    { platform: "email", label: "Email", code: "@", href: "mailto:kwizeraprince4real@gmail.com" },
   ],
 };
