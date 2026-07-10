@@ -1,27 +1,21 @@
-/**
- * Placeholder content for the About section. Replace every value here
- * with your real story, goals, education, and milestones — none of this
- * should ship as-is.
- */
-
 export const personalStory = {
   paragraphs: [
-    "Replace this with how you got started in programming — the moment, the curiosity, or the problem that pulled you in.",
-    "Add a second paragraph about what you've built or learned since then, and the kind of work that energizes you now.",
+    "I am Kwizera Prince, a Software Engineering student at Adventist University of Central Africa (AUCA) with a strong interest in backend development and full-stack web applications. I enjoy building practical software solutions that solve real-world problems.",
+    "My experience includes developing web applications using React, Node.js, PostgreSQL, and Tailwind CSS. I am passionate about learning new technologies, collaborating with others, and creating reliable software systems.",
   ],
 };
 
 export const careerObjectives: string[] = [
-  "Add a short-term goal you're currently working toward.",
-  "Add a medium-term goal — a skill, role, or domain you want to grow into.",
-  "Add a long-term ambition for where you want your career to go.",
+  "Gain practical experience by building production-quality full-stack applications and contributing to real-world projects.",
+  "Work as a full-stack or backend software developer, building scalable systems and modern web applications.",
+  "Become a highly skilled software engineer and contribute to impactful technology solutions while mentoring other aspiring developers.",
 ];
 
 export const education = {
-  school: "University Name",
-  degree: "Degree / Field of Study",
-  period: "0000 — 0000",
-  description: "Add a short note about your focus, thesis, or relevant coursework.",
+  school: "Adventist University of Central Africa (AUCA)",
+  degree: "Software Engineering",
+  period: "2025 — Present",
+  description: "Focused on full-stack development, with particular interest in backend systems and scalable architecture.",
 };
 
 export interface TimelineMilestone {
@@ -32,34 +26,9 @@ export interface TimelineMilestone {
 }
 
 export const timeline: TimelineMilestone[] = [
-  {
-    id: "started",
-    period: "Add Year",
-    title: "Started Programming",
-    description: "Add what got you started — a language, a course, a curiosity.",
-  },
-  {
-    id: "first-project",
-    period: "Add Year",
-    title: "First Project",
-    description: "Add a short description of the first thing you built.",
-  },
-  {
-    id: "university",
-    period: "Add Years",
-    title: "University Journey",
-    description: "Add a note about your degree path and key milestones along the way.",
-  },
-  {
-    id: "current",
-    period: "Now",
-    title: "Current Focus",
-    description: "Add what you're focused on building or learning right now.",
-  },
-  {
-    id: "future",
-    period: "Next",
-    title: "Future Goals",
-    description: "Add where you want to take your skills and career next.",
-  },
+  { id: "started",      period: "2024",          title: "Started Programming",   description: "Began learning programming and exploring web development fundamentals." },
+  { id: "first-project",period: "2024",          title: "First Project",          description: "Built my first web development projects using HTML, CSS, and JavaScript." },
+  { id: "university",   period: "2025 — Present", title: "University Journey",    description: "Studying Software Engineering at AUCA, deepening full-stack skills." },
+  { id: "current",      period: "Now",            title: "Current Focus",          description: "Full-stack development with React, Node.js, and PostgreSQL." },
+  { id: "future",       period: "Next",           title: "Future Goal",            description: "Professional software engineer specializing in backend and scalable systems." },
 ];

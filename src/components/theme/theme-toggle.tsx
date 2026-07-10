@@ -1,23 +1,18 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useMounted } from "@/hooks/use-mounted";
-import { cn } from "@/lib/utils";
 
 /**
- * A two-position calibration switch, not a sun/moon icon —
- * reinforces the instrument-panel motif used in the nav and footer.
+ * Clean icon-based toggle — sun for light, moon for dark.
+ * The icon swaps with a subtle scale + fade rather than sliding text.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useMounted();
-
   const isDark = mounted && resolvedTheme === "dark";
-
-  function toggle() {
-    setTheme(isDark ? "light" : "dark");
-  }
 
   return (
     <button
@@ -25,25 +20,23 @@ export function ThemeToggle({ className }: { className?: string }) {
       role="switch"
       aria-checked={mounted ? isDark : undefined}
       aria-label="Toggle color mode"
-      onClick={toggle}
-      className={cn(
-        "relative flex h-7 w-[88px] items-center justify-between rounded-sm border border-line-strong px-2",
-        "text-mono-label text-steel transition-colors",
-        className
-      )}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={`relative flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-steel transition-colors hover:border-signal/50 hover:text-signal ${className ?? ""}`}
     >
-      <span className={cn("z-10 transition-colors", !isDark && "text-ink")}>DAY</span>
-      <span className={cn("z-10 transition-colors", isDark && "text-ink")}>NGT</span>
-
-      {mounted && (
-        <motion.span
-          aria-hidden
-          className="absolute top-0.5 bottom-0.5 w-[40px] rounded-sm bg-signal/15 border border-signal"
-          initial={false}
-          animate={{ left: isDark ? "46px" : "2px" }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        />
-      )}
+      <AnimatePresence mode="wait" initial={false}>
+        {mounted && (
+          <motion.span
+            key={isDark ? "moon" : "sun"}
+            initial={{ scale: 0.6, opacity: 0, rotate: -30 }}
+            animate={{ scale: 1, opacity: 1, rotate: 0 }}
+            exit={{ scale: 0.6, opacity: 0, rotate: 30 }}
+            transition={{ duration: 0.18 }}
+            className="flex items-center justify-center"
+          >
+            {isDark ? <Moon size={16} aria-hidden /> : <Sun size={16} aria-hidden />}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </button>
   );
 }

@@ -1,10 +1,4 @@
 import { cn } from "@/lib/utils";
-
-/**
- * A small subsection label used inside a larger section — e.g. dividing
- * "About" into Story / Timeline / Snapshot without stacking multiple
- * full SectionHeadings on top of each other.
- */
 export function SubDivider({ label, className }: { label: string; className?: string }) {
   return (
     <div className={cn("mb-10 flex items-center gap-3", className)}>
