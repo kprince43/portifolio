@@ -214,7 +214,7 @@ export function Hero() {
               initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT }}
-              className="font-display text-6xl font-black leading-[0.93] text-white sm:text-7xl lg:text-[5.5rem]"
+              className="font-display text-5xl font-black leading-[0.93] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
             >
               {siteConfig.name.split(" ").map((word, i) => (
                 <span key={i} className="block">{word}</span>
