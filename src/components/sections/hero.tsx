@@ -193,7 +193,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col justify-center px-6 py-24 md:px-10 lg:px-16">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-4 sm:gap-8 lg:gap-16 lg:grid-cols-2">
 
           {/* ── LEFT: content ── */}
           <div className="z-10">
@@ -312,14 +312,14 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT: tech node visualization ── */}
+          {/* ── RIGHT / BOTTOM: tech node visualization ── */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE_OUT }}
-            className="hidden items-center justify-center lg:flex"
+            className="flex items-center justify-center"
           >
-            <div className="relative">
+            <div className="relative scale-[0.65] sm:scale-75 lg:scale-100">
               {/* glow behind the graph */}
               <div
                 aria-hidden
