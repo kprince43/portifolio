@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -61,10 +61,11 @@ export function Navbar() {
           <div className="hidden items-center gap-3 md:flex">
             <ThemeToggle />
             <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-signal px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              href={`mailto:${siteConfig.email}`}
+              aria-label="Send email"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition-colors hover:border-signal/50 hover:text-signal"
             >
-              Contact Me
+              <Mail size={16} aria-hidden />
             </a>
           </div>
 
@@ -111,11 +112,12 @@ export function Navbar() {
               <div className="flex items-center justify-between pt-4">
                 <ThemeToggle />
                 <a
-                  href="#contact"
+                  href={`mailto:${siteConfig.email}`}
+                  aria-label="Send email"
                   onClick={() => setOpen(false)}
-                  className="rounded-lg bg-signal px-4 py-2 text-sm font-semibold text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 hover:border-signal/50 hover:text-signal"
                 >
-                  Contact Me
+                  <Mail size={16} aria-hidden />
                 </a>
               </div>
             </Container>

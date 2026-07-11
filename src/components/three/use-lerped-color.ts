@@ -18,14 +18,12 @@ export function useLerpedColor(targetHex: string, speed = 4) {
   // react.dev/reference/react/useRef#avoiding-recreating-the-ref-contents).
   // This rule flags it as a general "no ref reads in render" case, but
   // there's no render output depending on this value — it's pure setup.
-  /* eslint-disable react-hooks/refs */
   const colorRef = useRef<Color>(undefined);
   if (!colorRef.current) colorRef.current = new Color(targetHex);
 
   const targetRef = useRef<Color>(undefined);
   if (!targetRef.current) targetRef.current = new Color(targetHex);
   targetRef.current.set(targetHex);
-  /* eslint-enable react-hooks/refs */
 
   useFrame((_, delta) => {
     colorRef.current!.lerp(targetRef.current!, Math.min(1, delta * speed));
@@ -34,6 +32,5 @@ export function useLerpedColor(targetHex: string, speed = 4) {
   // Returning the live Color instance is the point: the material prop
   // keeps referencing the same object, which useFrame mutates each tick
   // without needing a re-render.
-  // eslint-disable-next-line react-hooks/refs
   return colorRef.current;
 }

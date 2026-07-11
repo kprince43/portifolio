@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
-import { ArrowUpRight, Download, MapPin } from "lucide-react";
+import { ArrowUpRight, Download, MapPin, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { Magnetic } from "@/components/ui/magnetic";
 import { siteConfig } from "@/data/site";
@@ -300,13 +300,15 @@ export function Hero() {
                     </Magnetic>
                   );
                 })}
-              <span className="ml-1 text-sm text-white/25">·</span>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-sm text-white/40 transition-colors hover:text-white/70"
-              >
-                {siteConfig.email}
-              </a>
+              <Magnetic strength={0.25}>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  aria-label="Send email"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/50 backdrop-blur-sm transition-colors hover:border-signal/50 hover:text-signal"
+                >
+                  <Mail size={16} aria-hidden />
+                </a>
+              </Magnetic>
             </motion.div>
           </div>
 
